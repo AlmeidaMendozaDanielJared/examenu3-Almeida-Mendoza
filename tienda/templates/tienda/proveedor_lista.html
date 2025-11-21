@@ -1,0 +1,48 @@
+{% extends 'tienda/base.html' %}
+
+{% block title %}Lista de Proveedores{% endblock %}
+
+{% block content %}
+<h1 class="mb-4">Gestión de Proveedores Activos ({{ proveedores|length }})</h1>
+<div class="d-flex justify-content-end mb-3">
+    <a href="{% url 'proveedor_crear' %}" class="btn btn-primary">
+        <i class="fas fa-plus me-1"></i> Nuevo Proveedor
+    </a>
+</div>
+
+<div class="table-responsive shadow-sm rounded">
+    <table class="table table-hover table-striped">
+        <thead class="bg-dark text-white">
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Email</th>
+                <th>Teléfono</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for proveedor in proveedores %}
+            <tr>
+                <td>{{ proveedor.id }}</td>
+                <td>{{ proveedor.nombre }}</td>
+                <td>{{ proveedor.email|default:"N/A" }}</td>
+                <td>{{ proveedor.telefono|default:"N/A" }}</td>
+                <td>
+                    <a href="{% url 'proveedor_editar' proveedor.pk %}" class="btn btn-sm btn-info me-2" title="Editar">
+                        <i class="fas fa-edit"></i>
+                    </a>
+                    <a href="{% url 'proveedor_eliminar' proveedor.pk %}" class="btn btn-sm btn-danger" title="Eliminar">
+                        <i class="fas fa-trash-alt"></i>
+                    </a>
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="5" class="text-center">No hay proveedores activos registrados.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
