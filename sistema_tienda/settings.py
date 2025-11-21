@@ -83,7 +83,7 @@ DATABASES = {
         'NAME': 'examenu3AlmeidaM$tienda_db',
         'USER': 'examenu3AlmeidaM',
         'PASSWORD': 'jared123',
-        'HOST': 'examenu3AlmeidaM.mysql.pythonanywhere-services.com',
+        'HOST': 'examenu3AlmeidaMendoza.mysql.pythonanywhere-services.com',
         'PORT': '3306',
         'OPTIONS': {
             'charset': 'utf8mb4',
